@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+    CRM - Smart Treinamentos 
+{% endblock %}
+
+
+{% block content %}
+    <!-- CARDS HERE -->
+    {% include 'partials/cards.html' %}
+    <!-- TABLE HERE -->
+    {% include 'partials/table.html' %}                            
+    <!-- CONTACT CARDS HERE -->
+    {% include 'partials/contact_cards.html' %}
+{% endblock %}    
+
