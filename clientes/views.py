@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
 from .models import *
 from .forms import EntrarForm
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
+@login_required(login_url='entrar/')
 def index(request):
     return render(request, 'index.html')
 
@@ -24,3 +26,8 @@ def entrar(request):
             else:
                 messages.error(request, "Dados inválidos!")           
     return render(request, 'auth-normal-sign-in.html', context)
+
+@login_required(login_url='entrar/')
+def sair(request):
+    logout(request)
+    return redirect('entrar')
