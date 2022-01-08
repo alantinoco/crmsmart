@@ -45,6 +45,14 @@
 </div>
     <!-- Pre-loader end -->
 
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-danger" role="alert">
+                {{message}}
+            </div>
+        {% endfor %}
+    {% endif %}
+
     <section class="login p-fixed d-flex text-center bg-light">
         <!-- Container-fluid starts -->
         <div class="container">
@@ -52,7 +60,8 @@
                 <div class="col-sm-12">
                     <!-- Authentication card start -->
                     <div class="login-card card-block auth-body mr-auto ml-auto">
-                        <form class="md-float-material">
+                        <form class="md-float-material" action="{% url 'entrar' %}" method="POST">
+                            {% csrf_token %}
                             <div class="auth-box">
                                 <div class="row m-b-20">
                                     <div class="col-md-12">
@@ -61,6 +70,16 @@
                                 </div>
                                 <hr/>
                                 <div class="input-group">
+                                   {{form.usuário}}
+                                   <span class="md-line"></span>    
+                                </div>
+                                <div class="input-group">
+                                    {{form.senha}}
+                                    <span class="md-line"></span>
+                                </div>
+                                
+                                <!--
+                                <div class="input-group">
                                     <input type="text" class="form-control" placeholder="Nome de usuário">
                                     <span class="md-line"></span>
                                 </div>
@@ -68,9 +87,10 @@
                                     <input type="password" class="form-control" placeholder="Senha">
                                     <span class="md-line"></span>
                                 </div>
+                                -->
                                 <div class="row m-t-30">
                                     <div class="col-md-12">
-                                        <button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">Entrar</button>
+                                        <input type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20" value="Entrar">                                        
                                     </div>
                                 </div>
                                 <hr/>
