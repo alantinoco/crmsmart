@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+    CRM - Smart Treinamentos 
+{% endblock %}
+
+{% block content %}
+<div class="pcoded-content">
+    <div class="pcoded-inner-content">
+        <div class="main-body">
+            <div class="page-wrapper">
+
+                <div class="page-body">
+                    <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">
+                        <div class="card">
+                            <form class="form-horizontal">
+                                <div class="card-body">
+                                    
+                                    <div class="text-center">
+                                        <h4 class="card-title">Cadastrar cliente</h4>
+                                    </div><br>
+                                    <div class="form-group row">
+                                        <label for="fname" class="col-sm-3 text-right control-label col-form-label">First Name</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" id="fname" placeholder="First Name Here">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="lname" class="col-sm-3 text-right control-label col-form-label">Last Name</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" id="lname" placeholder="Last Name Here">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="lname" class="col-sm-3 text-right control-label col-form-label">Password</label>
+                                        <div class="col-sm-6">
+                                            <input type="password" class="form-control" id="lname" placeholder="Password Here">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="email1" class="col-sm-3 text-right control-label col-form-label">Company</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" id="email1" placeholder="Company Name Here">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Contact No</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" id="cono1" placeholder="Contact No Here">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="border-top text-center">
+                                    <div class="card-body">
+                                        <button type="button" class="btn btn-primary btn-lg">Cadastrar</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}   
+
+
+
+

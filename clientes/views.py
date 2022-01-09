@@ -34,4 +34,4 @@ def sair(request):
 
 
 def cadastrar_cliente(request):
-    return render(request, 'index.html')
+    return render(request, 'form-basic.html')
