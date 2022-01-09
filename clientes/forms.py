@@ -1,5 +1,4 @@
 from django import forms
-from django.db import models
 from .models import Cliente
 
 class EntrarForm(forms.Form):
@@ -13,5 +12,6 @@ class EntrarForm(forms.Form):
         }))
    
 class ClienteForm(forms.ModelForm):
-    class Meta: Cliente
-    fields = '__all__'
+    class Meta:
+        model = Cliente
+        fields = '__all__'

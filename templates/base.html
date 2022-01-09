@@ -80,7 +80,7 @@
                         <a class="mobile-search morphsearch-search" href="#">
                             <i class="ti-search"></i>
                         </a>
-                        <a href="">
+                        <a href="{% url 'index' %}">
                             <div class="d-inline-block">
                                 <h3>CRM - Smart</h3>
                             </div>
@@ -110,7 +110,7 @@
                                     </li>
                                     <li>
                                         <a href="{% url 'sair' %}">
-                                            <i class="ti-layout-sidebar-left"></i>Sair
+                                            <i class="fa fa-power-off" aria-hidden="true"></i>Sair
                                         </a>
                                     </li>
                                 </ul>
@@ -134,7 +134,7 @@
                             
                             <ul class="pcoded-item pcoded-left-item">
                                 <li class="active">
-                                    <a href="">
+                                    <a href="{% url 'index' %}">
                                         <span class="pcoded-micon"><i class="ti-panel"></i><b>D</b></span>
                                         <span class="pcoded-mtext" data-i18n="nav.dash.main">Painel</span>
                                         <span class="pcoded-mcaret"></span>
@@ -155,7 +155,7 @@
                                     </a>
                                     <ul class="pcoded-submenu">
                                         <li class=" ">
-                                            <a href="accordion.html">
+                                            <a href="{% url 'cadastrar_cliente' %}">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                                 <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Cadastrar</span>
                                                 <span class="pcoded-mcaret"></span>

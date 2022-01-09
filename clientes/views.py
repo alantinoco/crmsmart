@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import *
-from .forms import EntrarForm
+from .forms import EntrarForm, ClienteForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
@@ -34,4 +34,15 @@ def sair(request):
 
 
 def cadastrar_cliente(request):
-    return render(request, 'form-basic.html')
+    form = ClienteForm()
+
+    context = {
+        'form': form,
+    }
+
+    if request.method == "POST":
+        form = ClienteForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    return render(request, 'form-cliente.html', context)
