@@ -1,5 +1,6 @@
 from django import forms
 from .models import Cliente
+from django.contrib.auth.models import User
 
 class EntrarForm(forms.Form):
     usuário = forms.CharField(widget=forms.TextInput(attrs={
@@ -12,6 +13,16 @@ class EntrarForm(forms.Form):
         }))
    
 class ClienteForm(forms.ModelForm):
+    #atendente = forms.ModelChoiceField(queryset=User.objects.all())
     class Meta:
         model = Cliente
-        fields = '__all__'
+        fields = [
+            'atendente',
+            'nome',
+            'sobrenome',
+            'telefone',
+            'email',
+            'agendado',
+            'observações'
+        ]
+

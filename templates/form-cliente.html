@@ -2,6 +2,8 @@
 
 {% load static %}
 
+{% load crispy_forms_tags %}
+
 {% block title %}
     CRM - Smart Treinamentos 
 {% endblock %}
@@ -22,12 +24,12 @@
                                         <h4 class="card-title">Cadastrar cliente</h4>
                                     </div><br>
                                     <div class="form-group row">
-                                        <div class="col-sm-6">
+                                        <div class="container">
                                             <!--
                                                 <input type="text" class="form-control" id="fname" placeholder="First Name Here">
                                             -->
-                                            {{form.as_p}}
-                                        </div>
+                                            {{form|crispy}}
+                                           </div>
                                     </div>
                                     <!--
                                         <div class="form-group row">
