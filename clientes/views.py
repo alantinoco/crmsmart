@@ -31,3 +31,7 @@ def entrar(request):
 def sair(request):
     logout(request)
     return redirect('entrar')
+
+
+def cadastrar_cliente(request):
+    return render(request, 'index.html')

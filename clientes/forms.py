@@ -1,4 +1,6 @@
 from django import forms
+from django.db import models
+from .models import Cliente
 
 class EntrarForm(forms.Form):
     usuário = forms.CharField(widget=forms.TextInput(attrs={
@@ -10,3 +12,6 @@ class EntrarForm(forms.Form):
         'placeholder': '********',
         }))
    
+class ClienteForm(forms.ModelForm):
+    class Meta: Cliente
+    fields = '__all__'
