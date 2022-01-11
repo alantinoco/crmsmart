@@ -20,6 +20,7 @@ class ClienteForm(forms.ModelForm):
             'atendente',
             'nome',
             'sobrenome',
+            'cpf',
             'telefone',
             'email',
             'agendado',

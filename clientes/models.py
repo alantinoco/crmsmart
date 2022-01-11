@@ -20,7 +20,7 @@ class Cliente(models.Model):
     email= models.EmailField(max_length=50, null=True, blank=True)
     agendado = models.CharField(max_length=50, choices=AGENDADO)
     data = DateTimeField(auto_now_add=True)
-    observações = models.TextField()
+    observações = models.TextField(null=True, blank=True)
     
     def __str__(self):
         return self.nome
