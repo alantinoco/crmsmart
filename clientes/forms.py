@@ -15,7 +15,6 @@ class EntrarForm(forms.Form):
         }))
    
 class ClienteForm(forms.ModelForm):
-    #atendente = forms.ModelChoiceField(queryset=User.objects.all())
     class Meta:
         model = Cliente
         fields = [
