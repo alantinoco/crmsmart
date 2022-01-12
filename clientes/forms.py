@@ -1,8 +1,9 @@
 from django import forms
 from django.db import models
-from .models import Cliente, Agendamento
+from .models import Cliente
 from django.contrib.auth.models import User
 from django.conf import settings
+
 
 class EntrarForm(forms.Form):
     usuário = forms.CharField(widget=forms.TextInput(attrs={
@@ -28,6 +29,7 @@ class ClienteForm(forms.ModelForm):
             'observações'
         ]
 
+'''
 class AgendamentoForm(forms.ModelForm):
     data = forms.DateField(
             widget=forms.TextInput(
@@ -37,4 +39,4 @@ class AgendamentoForm(forms.ModelForm):
     class Meta:
         model = Agendamento
         fields = '__all__'
-
+'''

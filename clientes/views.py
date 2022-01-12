@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import *
-from .forms import EntrarForm, ClienteForm, AgendamentoForm
+from .forms import EntrarForm, ClienteForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
@@ -46,7 +46,7 @@ def cadastrar_cliente(request):
             form.save()
             return redirect('index')
     return render(request, 'form-cliente.html', context)
-
+'''
 def cadastrar_agendamento(request):
     form = AgendamentoForm()
 
@@ -60,3 +60,4 @@ def cadastrar_agendamento(request):
             form.save()
             return redirect('index')
     return render(request, 'form-agendamento.html', context)
+'''
