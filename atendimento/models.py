@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.fields import DateTimeField
 from clientes.models import PrimeiroAtendimento
+from escola.models import Cursos
 
 class Agendamento(models.Model):
 
@@ -25,3 +26,21 @@ class Agendamento(models.Model):
     data = models.DateField(auto_now_add=False, auto_now=False)
     horário = models.CharField(max_length=50, choices=HORARIOS)
     observações = models.TextField(null=True, blank=True)
+
+
+class AtendimentoPresencial(models.Model):
+
+    COMPROU =  (
+        ("S", "Sim"),
+        ("N", "Não"),
+    )
+
+    atendente = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL)
+    cliente = models.ForeignKey(PrimeiroAtendimento, null=True, blank=True, on_delete=models.SET_NULL)
+    data = models.DateTimeField(auto_now_add=True)
+    curso_desejado = models.ForeignKey(Cursos, null=True, blank=True, on_delete=models.CASCADE)
+    comprou = models.CharField(max_length=50, choices=COMPROU)
+    observações = models.TextField(null=True, blank=True)
+
+    def __str__(self):
+        return str(self.cliente) 

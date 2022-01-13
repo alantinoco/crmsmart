@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import AgendamentoForm
+from .forms import AgendamentoForm, AtendimentoPresencialForm
 
 
 def cadastrar_agendamento(request):
@@ -14,4 +14,19 @@ def cadastrar_agendamento(request):
         if form.is_valid():
             form.save()
             return redirect('index')
-    return render(request, 'form-agendamento.html', context)
+    return render(request, 'atendimento/cadastrar-agendamento.html', context)
+
+
+def cadastrar_atendimento(request):
+    form = AtendimentoPresencialForm()
+
+    context = {
+        'form': form,
+    }
+
+    if request.method == "POST":
+        form = AtendimentoPresencialForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    return render(request, 'atendimento/cadastrar-atendimento.html', context)
