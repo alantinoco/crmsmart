@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import *
-from .forms import EntrarForm, ClienteForm
+from .forms import EntrarForm, PrimeiroAtendimentoForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
@@ -33,19 +33,19 @@ def sair(request):
     return redirect('entrar')
 
 
-def cadastrar_cliente(request):
-    form = ClienteForm()
+def primeiro_atendimento(request):
+    form = PrimeiroAtendimentoForm()
 
     context = {
         'form': form,
     }
 
     if request.method == "POST":
-        form = ClienteForm(request.POST)
+        form = PrimeiroAtendimentoForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('index')
-    return render(request, 'form-cliente.html', context)
+    return render(request, 'primeiro-atendimento.html', context)
 '''
 def cadastrar_agendamento(request):
     form = AgendamentoForm()

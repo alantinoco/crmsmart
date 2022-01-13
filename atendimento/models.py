@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.fields import DateTimeField
-from clientes.models import Cliente
+from clientes.models import PrimeiroAtendimento
 
 class Agendamento(models.Model):
 
@@ -21,7 +21,7 @@ class Agendamento(models.Model):
     )
 
     atendente = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL)
-    cliente = models.ForeignKey(Cliente, null=True, blank=True, on_delete=models.SET_NULL)
+    cliente = models.ForeignKey(PrimeiroAtendimento, null=True, blank=True, on_delete=models.SET_NULL)
     data = models.DateField(auto_now_add=False, auto_now=False)
     horário = models.CharField(max_length=50, choices=HORARIOS)
     observações = models.TextField(null=True, blank=True)

@@ -1,6 +1,6 @@
 from django import forms
 from django.db import models
-from .models import Cliente
+from .models import PrimeiroAtendimento
 from django.contrib.auth.models import User
 from django.conf import settings
 
@@ -15,19 +15,10 @@ class EntrarForm(forms.Form):
         'placeholder': '********',
         }))
    
-class ClienteForm(forms.ModelForm):
+class PrimeiroAtendimentoForm(forms.ModelForm):
     class Meta:
-        model = Cliente
-        fields = [
-            'atendente',
-            'nome',
-            'sobrenome',
-            'cpf',
-            'telefone',
-            'email',
-            'agendado',
-            'observações'
-        ]
+        model = PrimeiroAtendimento
+        fields = '__all__'
 
 '''
 class AgendamentoForm(forms.ModelForm):
