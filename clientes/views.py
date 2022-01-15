@@ -1,13 +1,26 @@
 from django.shortcuts import render, redirect
 from .models import *
-from .forms import EntrarForm, PrimeiroAtendimentoForm
+from atendimento.models import Agendamento, PrimeiroAtendimento
+from .forms import EntrarForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
+
+
+
+
 @login_required(login_url='entrar/')
 def index(request):
-    return render(request, 'index.html')
+    contatos = str(len(PrimeiroAtendimento.objects.all()))
+    agendamentos = Agendamento.objects.all()
+
+    context = {
+        "agendamentos": agendamentos,
+        "contatos": contatos,
+    }
+
+    return render(request, 'index.html', context)
 
 def entrar(request):
     form = EntrarForm()
@@ -32,32 +45,3 @@ def sair(request):
     logout(request)
     return redirect('entrar')
 
-
-def primeiro_atendimento(request):
-    form = PrimeiroAtendimentoForm()
-
-    context = {
-        'form': form,
-    }
-
-    if request.method == "POST":
-        form = PrimeiroAtendimentoForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('index')
-    return render(request, 'primeiro-atendimento.html', context)
-'''
-def cadastrar_agendamento(request):
-    form = AgendamentoForm()
-
-    context = {
-        'form': form,
-    }
-
-    if request.method == "POST":
-        form = AgendamentoForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('index')
-    return render(request, 'form-agendamento.html', context)
-'''

@@ -1,6 +1,5 @@
 from django import forms
 from django.db import models
-from .models import PrimeiroAtendimento
 from django.contrib.auth.models import User
 from django.conf import settings
 
@@ -15,19 +14,5 @@ class EntrarForm(forms.Form):
         'placeholder': '********',
         }))
    
-class PrimeiroAtendimentoForm(forms.ModelForm):
-    class Meta:
-        model = PrimeiroAtendimento
-        fields = '__all__'
 
-'''
-class AgendamentoForm(forms.ModelForm):
-    data = forms.DateField(
-            widget=forms.TextInput(
-                attrs={'type': 'date'}
-            )
-        )
-    class Meta:
-        model = Agendamento
-        fields = '__all__'
-'''
+

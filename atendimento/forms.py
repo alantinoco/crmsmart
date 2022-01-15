@@ -1,6 +1,10 @@
 from django import forms
-from .models import Agendamento, AtendimentoPresencial
+from .models import PrimeiroAtendimento, Agendamento, AtendimentoPresencial
 
+class PrimeiroAtendimentoForm(forms.ModelForm):
+    class Meta:
+        model = PrimeiroAtendimento
+        fields = '__all__'
 
 class AgendamentoForm(forms.ModelForm):
     data = forms.DateField(
