@@ -7,22 +7,6 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
 
-
-
-'''
-@login_required(login_url='entrar/')
-def index(request):
-    agendamentos = Agendamento.objects.all()
-    contatos = str(len(PrimeiroAtendimento.objects.all()))
-
-    context = {
-        "agendamentos": agendamentos,
-        "contatos": contatos,
-    }
-
-    return render(request, 'index.html', context)
-'''
-
 @login_required(login_url='entrar/')
 def index(request):
     '''
