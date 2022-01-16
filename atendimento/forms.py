@@ -1,22 +1,17 @@
 from django import forms
-from .models import PrimeiroAtendimento, Agendamento, AtendimentoPresencial
+from .models import Contato, Venda
 
-class PrimeiroAtendimentoForm(forms.ModelForm):
-    class Meta:
-        model = PrimeiroAtendimento
-        fields = '__all__'
-
-class AgendamentoForm(forms.ModelForm):
+class ContatoForm(forms.ModelForm):
     data = forms.DateField(
             widget=forms.TextInput(
                 attrs={'type': 'date'}
             )
         )
     class Meta:
-        model = Agendamento
+        model = Contato
         fields = '__all__'
 
-class AtendimentoPresencialForm(forms.ModelForm):
+class VendaForm(forms.ModelForm):
     class Meta:
-        model = AtendimentoPresencial
+        model = Venda
         fields = '__all__'

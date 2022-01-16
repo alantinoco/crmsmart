@@ -69,27 +69,20 @@
     <div id="pcoded" class="pcoded">
         <div class="pcoded-overlay-box"></div>
         <div class="pcoded-container navbar-wrapper">
-
             <nav class="navbar header-navbar pcoded-header">
                 <div class="navbar-wrapper">
-
                     <div class="navbar-logo">
                         <a class="mobile-menu" id="mobile-collapse" href="#!">
                             <i class="ti-menu"></i>
                         </a>
-                        <a class="mobile-search morphsearch-search" href="#">
-                            <i class="ti-search"></i>
-                        </a>
                         <a href="{% url 'index' %}">
                             <div class="d-inline-block">
-                                <h3>CRM - Smart</h3>
+                                <div class="container">
+                                    <h3>CRM - Smart</h3>
+                                </div>
                             </div>
                         </a>
-                        <a class="mobile-options">
-                            <i class="ti-more"></i>
-                        </a>
                     </div>
-
                     <div class="navbar-container container-fluid">
                         <ul class="nav-left">
                             <li>
@@ -110,7 +103,7 @@
                                     </li>
                                     <li>
                                         <a href="{% url 'sair' %}">
-                                            <i class="fa fa-power-off" aria-hidden="true"></i>Sair
+                                            <i class="ti-power-off" aria-hidden="true"></i>Sair
                                         </a>
                                     </li>
                                 </ul>
@@ -178,23 +171,16 @@
                                     </a>
                                     <ul class="pcoded-submenu">
                                         <li class=" ">
-                                            <a href="{% url 'primeiro_atendimento' %}">
-                                                <span class="pcoded-micon"><i class="ti-user"></i></span>
-                                                <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Primeiro atendimento</span>
+                                            <a href="{% url 'cadastrar_contato' %}">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Contato</span>
                                                 <span class="pcoded-mcaret"></span>
                                             </a>
                                         </li>
                                         <li class=" ">
-                                            <a href="{% url 'cadastrar-agendamento' %}">
+                                            <a href="{% url 'cadastrar_venda' %}">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Agendamento</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
-                                        <li class=" ">
-                                            <a href="{% url 'cadastrar_atendimento' %}">
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Atendimento presencial</span>
+                                                <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Venda</span>
                                                 <span class="pcoded-mcaret"></span>
                                             </a>
                                         </li>

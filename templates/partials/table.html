@@ -5,16 +5,22 @@
             <thead>
                 <tr>
                     <th>Cliente</th>
-                    <th>Data</th>
                     <th>Horário</th>
+                    <th>Editar</th>
+                    <th>Deletar</th>
                 </tr>
             </thead>
             <tbody>
                 {% for agendamento in agendamentos %}
                 <tr>
                     <td>{{agendamento.cliente}}</td>
-                    <td>{{agendamento.data}}</td>
                     <td>{{agendamento.horário}}</td>
+                    <td>
+                        <input type="submit" class="btn btn-outline-primary btn-sm" value="Editar">
+                    </td>
+                    <td>
+                        <input type="submit" class="btn btn-outline-danger btn-sm" value="Deletar">
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>

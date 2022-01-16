@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import *
-from atendimento.models import Agendamento, PrimeiroAtendimento
+from atendimento.models import Contato, Venda
 from .forms import EntrarForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
@@ -9,11 +9,11 @@ from django.contrib import messages
 
 
 
-
+'''
 @login_required(login_url='entrar/')
 def index(request):
-    contatos = str(len(PrimeiroAtendimento.objects.all()))
     agendamentos = Agendamento.objects.all()
+    contatos = str(len(PrimeiroAtendimento.objects.all()))
 
     context = {
         "agendamentos": agendamentos,
@@ -21,6 +21,22 @@ def index(request):
     }
 
     return render(request, 'index.html', context)
+'''
+
+@login_required(login_url='entrar/')
+def index(request):
+    '''
+    contatos = str(len(PrimeiroAtendimento.objects.all()))
+    agendamentos = Agendamento.objects.all()
+
+    context = {
+        "agendamentos": agendamentos,
+        "contatos": contatos,
+    }
+    '''
+    return render(request, 'index.html', {})
+
+
 
 def entrar(request):
     form = EntrarForm()

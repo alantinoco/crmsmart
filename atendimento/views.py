@@ -1,47 +1,32 @@
 from django.shortcuts import render, redirect
-from .forms import PrimeiroAtendimentoForm, AgendamentoForm, AtendimentoPresencialForm
+from .forms import ContatoForm, VendaForm
 
 
-def primeiro_atendimento(request):
-    form = PrimeiroAtendimentoForm()
-
-    context = {
-        'form': form,
-    }
-
-    if request.method == "POST":
-        form = PrimeiroAtendimentoForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('index')
-    return render(request, 'primeiro-atendimento.html', context)
-
-
-def cadastrar_agendamento(request):
-    form = AgendamentoForm()
+def cadastrar_contato(request):
+    form = ContatoForm()
 
     context = {
         'form': form,
     }
 
     if request.method == "POST":
-        form = AgendamentoForm(request.POST)
+        form = ContatoForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('index')
-    return render(request, 'atendimento/cadastrar-agendamento.html', context)
+    return render(request, 'atendimento/cadastrar/contato.html', context)
 
 
-def cadastrar_atendimento(request):
-    form = AtendimentoPresencialForm()
+def cadastrar_venda(request):
+    form = VendaForm()
 
     context = {
         'form': form,
     }
 
     if request.method == "POST":
-        form = AtendimentoPresencialForm(request.POST)
+        form = VendaForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('index')
-    return render(request, 'atendimento/cadastrar-atendimento.html', context)
+    return render(request, 'atendimento/cadastrar/venda.html', context)

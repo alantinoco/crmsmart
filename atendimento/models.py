@@ -1,4 +1,5 @@
 from operator import mod
+from pyexpat import model
 from statistics import mode
 from django.db import models
 from django.contrib.auth.models import User
@@ -14,7 +15,9 @@ class FormaPagamento(models.Model):
     def __str__(self):
         return self.nome
 
-class PrimeiroAtendimento(models.Model):
+
+class Contato(models.Model):
+
     
     AGENDADO =  (
         ("S", "Sim"),
@@ -29,21 +32,6 @@ class PrimeiroAtendimento(models.Model):
         ("Matriz", "Matriz"),
         ("Outros", "Outros"),
     )
-
-    atendente = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL)
-    nome = models.CharField(max_length=50)
-    telefone = models.CharField(max_length=50)
-    curso_desejado = models.ForeignKey(Cursos, null=True, blank=True, on_delete=models.CASCADE)
-    origem = models.CharField(max_length=50, choices=ORIGEM)
-    agendado = models.CharField(max_length=50, choices=AGENDADO)
-    data = DateTimeField(auto_now_add=True)
-    observações = models.TextField(null=True, blank=True)
-    
-    def __str__(self):
-        return self.nome
-
-
-class Agendamento(models.Model):
 
     HORARIOS =  (
         ("08:00 as 09:00", "08:00 as 09:00"),
@@ -61,16 +49,28 @@ class Agendamento(models.Model):
     )
 
     atendente = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL)
-    cliente = models.CharField(max_length=50)
+    nome = models.CharField(max_length=50)
+    sobrenome = models.CharField(max_length=50, null=True, blank=True)
+    telefone = models.CharField(max_length=11, unique=True)
+    email = models.EmailField(max_length=50, null=True, blank=True, unique=True)
+    cpf = models.CharField(max_length=50, null=True, blank=True)
+    curso_desejado = models.ForeignKey(Cursos, null=True, blank=True, on_delete=models.CASCADE)
+    origem = models.CharField(max_length=50, choices=ORIGEM)
+    agendado = models.CharField(max_length=50, choices=AGENDADO)
     data = models.DateField(auto_now_add=False, auto_now=False)
     horário = models.CharField(max_length=50, choices=HORARIOS)
-    observações = models.TextField(null=True, blank=True)
+    descrição_do_atendimento = models.TextField(null=True, blank=True)
+    data_de_criação = models.DateTimeField(auto_now_add=True)
+    última_modificação = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ('nome',)
 
     def __str__(self):
-        return self.cliente
+        return self.nome, self.telefone
 
 
-class AtendimentoPresencial(models.Model):
+class Venda(models.Model):
 
     COMPROU =  (
         ("S", "Sim"),
@@ -78,12 +78,12 @@ class AtendimentoPresencial(models.Model):
     )
 
     atendente = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL)
-    cliente = models.ForeignKey(PrimeiroAtendimento, null=True, blank=True, on_delete=models.SET_NULL)
+    cliente = models.ForeignKey(Contato, null=True, blank=True, on_delete=models.SET_NULL)
     data = models.DateTimeField(auto_now_add=True)
-    curso_desejado = models.ForeignKey(Cursos, null=True, blank=True, on_delete=models.CASCADE)
     comprou = models.CharField(max_length=50, choices=COMPROU)
+    curso_comprado = models.ForeignKey(Cursos, null=True, blank=True, on_delete=models.CASCADE)
     forma_de_pagamento = models.ForeignKey(FormaPagamento, null=True, blank=True, on_delete=models.SET_NULL)
     observações = models.TextField(null=True, blank=True)
 
     def __str__(self):
-        return str(self.cliente) 
+        return f'Vendido por {self.atendente} ao cliente {self.cliente} em {self.data}.' 
