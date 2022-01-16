@@ -84,6 +84,3 @@ class Venda(models.Model):
     curso_comprado = models.ForeignKey(Cursos, null=True, blank=True, on_delete=models.CASCADE)
     forma_de_pagamento = models.ForeignKey(FormaPagamento, null=True, blank=True, on_delete=models.SET_NULL)
     observações = models.TextField(null=True, blank=True)
-
-    def __str__(self):
-        return f'Vendido por {self.atendente} ao cliente {self.cliente} em {self.data}.' 

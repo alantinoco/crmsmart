@@ -9,16 +9,16 @@ from django.contrib import messages
 
 @login_required(login_url='entrar/')
 def index(request):
-    '''
-    contatos = str(len(PrimeiroAtendimento.objects.all()))
-    agendamentos = Agendamento.objects.all()
+    contatos = str(len(Contato.objects.all()))
+    agendamentos = Contato.objects.filter(agendado='S')
+    
 
     context = {
         "agendamentos": agendamentos,
         "contatos": contatos,
     }
-    '''
-    return render(request, 'index.html', {})
+   
+    return render(request, 'index.html', context)
 
 
 
