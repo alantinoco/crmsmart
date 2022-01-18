@@ -57,17 +57,12 @@ class Contato(models.Model):
     curso_desejado = models.ForeignKey(Cursos, null=True, blank=True, on_delete=models.CASCADE)
     origem = models.CharField(max_length=50, choices=ORIGEM)
     agendado = models.CharField(max_length=50, choices=AGENDADO)
-    data = models.DateField(auto_now_add=False, auto_now=False)
-    horário = models.CharField(max_length=50, choices=HORARIOS)
+    data = models.DateField(null=True, blank="True")
+    horário = models.CharField(max_length=50, choices=HORARIOS, null=True, blank=True)
     descrição_do_atendimento = models.TextField(null=True, blank=True)
     data_de_criação = models.DateTimeField(auto_now_add=True)
     última_modificação = models.DateTimeField(auto_now=True)
 
-    class Meta:
-        ordering = ('nome',)
-
-    def __str__(self):
-        return self.nome, self.telefone
 
 
 class Venda(models.Model):

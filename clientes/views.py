@@ -5,12 +5,16 @@ from .forms import EntrarForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+import datetime
+
 
 
 @login_required(login_url='entrar/')
 def index(request):
+    hoje = datetime.datetime.now()
+
     contatos = str(len(Contato.objects.all()))
-    agendamentos = Contato.objects.filter(agendado='S')
+    agendamentos = Contato.objects.filter(data=hoje)
     
 
     context = {
