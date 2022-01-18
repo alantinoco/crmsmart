@@ -13,13 +13,17 @@ import datetime
 def index(request):
     hoje = datetime.datetime.now()
 
-    contatos = str(len(Contato.objects.all()))
+    contatos = str(len(Contato.objects.filter(data=hoje)))
+    agendados = str(len(Contato.objects.filter(agendado="S", data=hoje)))
     agendamentos = Contato.objects.filter(data=hoje)
+    não_agendados = str(len(Contato.objects.filter(agendado="N", data=hoje)))
     
 
     context = {
         "agendamentos": agendamentos,
         "contatos": contatos,
+        "agendados": agendados,
+        "não_agendados": não_agendados,
     }
    
     return render(request, 'index.html', context)
