@@ -5,6 +5,7 @@ from .forms import EntrarForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from atendimento.filters import ContatoFilter
 import datetime
 
 
@@ -13,17 +14,22 @@ import datetime
 def index(request):
     hoje = datetime.datetime.now()
 
+    agendamentos = Contato.objects.all()
+    filter = ContatoFilter(request.GET, queryset=agendamentos)
+
+    
     contatos = str(len(Contato.objects.filter(data=hoje)))
     agendados = str(len(Contato.objects.filter(agendado="S", data=hoje)))
-    agendamentos = Contato.objects.filter(data=hoje)
+    # agendamentos = Contato.objects.filter(data=hoje)
     não_agendados = str(len(Contato.objects.filter(agendado="N", data=hoje)))
-    
+
 
     context = {
         "agendamentos": agendamentos,
         "contatos": contatos,
         "agendados": agendados,
         "não_agendados": não_agendados,
+        'filter': filter,
     }
    
     return render(request, 'index.html', context)

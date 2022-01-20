@@ -1,6 +1,13 @@
+{% load crispy_forms_tags %}
 <!-- Table Start -->
 <div class="col-md-12 col-xl-8">
     <div class="table-responsive">
+        <form method="GET">
+            <p>
+            {{ filter.form|crispy }}
+            <input type="submit" class="btn btn-primary" value="Buscar agendamentos">
+            </p>
+        </form><br>
         <table class="table">
             <thead>
                 <tr>
@@ -11,7 +18,7 @@
                 </tr>
             </thead>
             <tbody>
-                {% for agendamento in agendamentos %}
+                {% for agendamento in filter.qs %}
                 <tr>
                     <td>{{agendamento.nome}}</td>
                     <td>{{agendamento.horário}}</td>
