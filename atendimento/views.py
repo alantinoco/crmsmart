@@ -14,7 +14,7 @@ def cadastrar_contato(request):
         if form.is_valid():
             form.save()
             return redirect('index')
-    return render(request, 'atendimento/cadastrar/contato.html', context)
+    return render(request, 'atendimento/cadastrar/cadastrar-contato.html', context)
 
 
 def cadastrar_venda(request):
@@ -29,4 +29,13 @@ def cadastrar_venda(request):
         if form.is_valid():
             form.save()
             return redirect('index')
-    return render(request, 'atendimento/cadastrar/venda.html', context)
+    return render(request, 'atendimento/cadastrar/cadastrar-venda.html', context)
+
+
+def visualizar_contato(request):
+    return render(request, 'atendimento/visualizar/visualizar-contato.html')
+
+
+
+def visualizar_venda(request):
+    return render(request, 'atendimento/visualizar/visualizar-venda.html')
