@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import ContatoForm, VendaForm
+from .models import Contato, Venda
 
 
 def cadastrar_contato(request):
@@ -32,10 +33,17 @@ def cadastrar_venda(request):
     return render(request, 'atendimento/cadastrar/cadastrar-venda.html', context)
 
 
-def visualizar_contato(request):
-    return render(request, 'atendimento/visualizar/visualizar-contato.html')
+def visualizar_contatos(request):
+    
+    contatos = Contato.objects.all()
+
+    context = {
+        'contatos': contatos,
+    }
+
+    return render(request, 'atendimento/visualizar/visualizar-contatos.html', context)
 
 
 
-def visualizar_venda(request):
-    return render(request, 'atendimento/visualizar/visualizar-venda.html')
+def visualizar_vendas(request):
+    return render(request, 'atendimento/visualizar/visualizar-vendas.html')

@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+
+{% block title %}
+    CRM - Smart Treinamentos 
+{% endblock %}
+
+
+{% block content %}
+<div class="pcoded-content">
+    <div class="pcoded-inner-content">
+
+        <div class="main-body">
+            <div class="table-responsive">
+                <br>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Sobrenome</th>
+                            <th>Telefone</th>
+                            <th>E-mail</th>
+                            <th>CPF</th>
+                            <th>Curso desejado</th>
+                            <th>Origem</th>
+                            <th>Editar contato</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for contato in contatos %}
+                        <tr>
+                            <td>{{contato.nome}}</td>
+                            <td>{{contato.sobrenome}}</td>
+                            <td>{{contato.telefone}}</td>
+                            <td>{{contato.email}}</td>
+                            <td>{{contato.cpf}}</td>
+                            <td>{{contato.curso_desejado}}</td>
+                            <td>{{contato.origem}}</td>
+                            <td>
+                                <input type="submit" class="btn btn-outline-primary btn-sm" value="Atualizar">
+                                <input type="submit" class="btn btn-outline-danger btn-sm" value="Deletar">
+
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="styleSelector">
+
+        </div>
+    </div>
+</div>
+{% endblock %}    
+
+
+
+
