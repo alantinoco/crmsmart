@@ -17,9 +17,13 @@
         <div class="main-body">
             <div class="table-responsive">
                 <br>
+                <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">
+                    <i>* Mantenha o cadastro de contatos sempre atualizado!</i>
+                </div><br>
                 <table class="table">
                     <thead>
                         <tr>
+                            <th>Id</th>
                             <th>Nome</th>
                             <th>Sobrenome</th>
                             <th>Telefone</th>
@@ -27,21 +31,37 @@
                             <th>CPF</th>
                             <th>Curso desejado</th>
                             <th>Origem</th>
-                            <th>Editar contato</th>
+                            <th>Atualizar</th>
+                            <th>Deletar</th>
+
                         </tr>
                     </thead>
                     <tbody>
                         {% for contato in contatos %}
                         <tr>
-                            <td>{{contato.nome}}</td>
+                            <a href="{% url 'visualizar_contato' contato.id %}">
+                            <td>
+                                <a href="{% url 'visualizar_contato' contato.id %}">
+                                    {{contato.id}}
+                                </a>
+                            </td>
+                            <a href="{% url 'visualizar_contato' contato.id %}">
+                                <td>
+                                    <a href="{% url 'visualizar_contato' contato.id %}">
+                                        {{contato.nome}}
+                                    </a>
+                                </td>
                             <td>{{contato.sobrenome}}</td>
                             <td>{{contato.telefone}}</td>
                             <td>{{contato.email}}</td>
                             <td>{{contato.cpf}}</td>
                             <td>{{contato.curso_desejado}}</td>
                             <td>{{contato.origem}}</td>
+                            
                             <td>
                                 <input type="submit" class="btn btn-outline-primary btn-sm" value="Atualizar">
+                            </td>
+                            <td>
                                 <input type="submit" class="btn btn-outline-danger btn-sm" value="Deletar">
 
                             </td>

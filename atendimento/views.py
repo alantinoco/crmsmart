@@ -34,7 +34,7 @@ def cadastrar_venda(request):
 
 
 def visualizar_contatos(request):
-    
+
     contatos = Contato.objects.all()
 
     context = {
@@ -44,6 +44,13 @@ def visualizar_contatos(request):
     return render(request, 'atendimento/visualizar/visualizar-contatos.html', context)
 
 
+def visualizar_contato(request, pk):
+    contato = Contato.objects.get(id=pk)
+    return render(request, 'atendimento/visualizar/visualizar-contato.html', {'contato': contato})
+
+
 
 def visualizar_vendas(request):
     return render(request, 'atendimento/visualizar/visualizar-vendas.html')
+
+
