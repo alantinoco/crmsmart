@@ -7,4 +7,5 @@ urlpatterns = [
      path('visualizar/contatos/',views.visualizar_contatos, name="visualizar_contatos"),
      path('visualizar/contato/<int:pk>/',views.visualizar_contato, name="visualizar_contato"),
      path('visualizar/vendas/',views.visualizar_vendas, name="visualizar_vendas"),
+     path('visualizar/venda/<int:pk>/',views.visualizar_venda, name="visualizar_venda"),
 ]

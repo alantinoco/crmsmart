@@ -42,7 +42,6 @@ class Contato(models.Model):
         ("14:00 as 15:00", "14:00 as 15:00"),
         ("15:00 as 16:00", "15:00 as 16:00"),
         ("16:00 as 17:00", "16:00 as 17:00"),
-        ("17:00 as 16:00", "17:00 as 16:00"),
         ("17:00 as 18:00","17:00 as 18:00"),
         ("18:00 as 19:00","18:00 as 19:00"),
         ("ESPECIAL", "ESPECIAL"),
@@ -59,10 +58,12 @@ class Contato(models.Model):
     agendado = models.CharField(max_length=50, choices=AGENDADO)
     data = models.DateField(null=True, blank="True")
     horário = models.CharField(max_length=50, choices=HORARIOS, null=True, blank=True)
-    descrição_do_atendimento = models.TextField(null=True, blank=True)
+    descrição_do_atendimento = models.TextField()
     data_de_criação = models.DateTimeField(auto_now_add=True)
     última_modificação = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return f"{self.nome} {self.sobrenome}"
 
 
 class Venda(models.Model):
@@ -79,3 +80,6 @@ class Venda(models.Model):
     curso_comprado = models.ForeignKey(Cursos, null=True, blank=True, on_delete=models.CASCADE)
     forma_de_pagamento = models.ForeignKey(FormaPagamento, null=True, blank=True, on_delete=models.SET_NULL)
     observações = models.TextField(null=True, blank=True)
+
+    def __str__(self):
+        return f'{self.cliente} - {self.curso_comprado}'

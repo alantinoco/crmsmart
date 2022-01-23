@@ -39,13 +39,11 @@
                     <tbody>
                         {% for contato in contatos %}
                         <tr>
-                            <a href="{% url 'visualizar_contato' contato.id %}">
                             <td>
                                 <a href="{% url 'visualizar_contato' contato.id %}">
                                     {{contato.id}}
                                 </a>
                             </td>
-                            <a href="{% url 'visualizar_contato' contato.id %}">
                                 <td>
                                     <a href="{% url 'visualizar_contato' contato.id %}">
                                         {{contato.nome}}

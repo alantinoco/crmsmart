@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from .forms import ContatoForm, VendaForm
 from .models import Contato, Venda
 
-
+@login_required(login_url='entrar/')
 def cadastrar_contato(request):
     form = ContatoForm()
 
@@ -18,6 +19,7 @@ def cadastrar_contato(request):
     return render(request, 'atendimento/cadastrar/cadastrar-contato.html', context)
 
 
+@login_required(login_url='entrar/')
 def cadastrar_venda(request):
     form = VendaForm()
 
@@ -33,6 +35,7 @@ def cadastrar_venda(request):
     return render(request, 'atendimento/cadastrar/cadastrar-venda.html', context)
 
 
+@login_required(login_url='entrar/')
 def visualizar_contatos(request):
 
     contatos = Contato.objects.all()
@@ -44,13 +47,21 @@ def visualizar_contatos(request):
     return render(request, 'atendimento/visualizar/visualizar-contatos.html', context)
 
 
+@login_required(login_url='entrar/')
 def visualizar_contato(request, pk):
     contato = Contato.objects.get(id=pk)
     return render(request, 'atendimento/visualizar/visualizar-contato.html', {'contato': contato})
 
 
-
+@login_required(login_url='entrar/')
 def visualizar_vendas(request):
-    return render(request, 'atendimento/visualizar/visualizar-vendas.html')
+    vendas = Venda.objects.all()
+    return render(request, 'atendimento/visualizar/visualizar-vendas.html', {'vendas': vendas})
+
+@login_required(login_url='entrar/')
+def visualizar_venda(request, pk):
+    vendas = Venda.objects.filter(id=pk)
+    return render(request, 'atendimento/visualizar/visualizar-venda.html', {'vendas': vendas})
+
 
 

@@ -2,6 +2,7 @@
 
 {% load static %}
 
+{% load crispy_forms_tags %}
 
 
 {% block title %}
@@ -14,35 +15,48 @@
     <div class="pcoded-inner-content">
 
         <div class="main-body">
-            <div class="page-wrapper">
-                <!-- Page-header start -->
-                <div class="page-header card">
-                    <div class="row align-items-end">
-                        <div class="col-lg-8">
-                            <div class="page-header-title">
-                                <i class="icofont icofont icofont icofont-file-document bg-c-pink"></i>
-                                <div class="d-inline">
-                                    <h4>Sample Page</h4>
-                                    <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
-                                    <br>
-                                    <p>
-                                        <div class="col-md-12">
-                                            <div class="pull-left">
-                                                <address>
-                                                    <h3> &nbsp;<b class="text-danger">Material Pro Admin</b></h3>
-                                                    <p class="text-muted m-l-5">E 104, Dharti-2,
-                                                        <br/> Nr' Viswakarma Temple,
-                                                        <br/> Talaja Road,
-                                                        <br/> Bhavnagar - 364002</p>
-                                                </address>
-                                            </div>
-                                        </div>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="table-responsive">
+                <br>
+                <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">
+                    <i>* Mantenha o cadastro de contatos sempre atualizado!</i>
+                </div><br>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Cliente</th>
+                            <th>Vendedor</th>
+                            <th>Curso</th>
+                            <th>Forma de pagamento</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for venda in vendas %}
+                        <tr>
+                            <td>
+                                <a href="{% url 'visualizar_venda' venda.id %}">
+                                    {{venda.id}}
+                                </a>
+                            </td>
+                                <td>
+                                    <a href="{% url 'visualizar_venda' venda.id %}">
+                                        {{venda.cliente}}
+                                    </a>
+                                </td>
+                            <td>{{venda.atendente}}</td>
+                            <td>{{venda.curso_comprado}}</td>
+                            <td>{{venda.forma_de_pagamento}}</td>        
+                            <td>
+                                <input type="submit" class="btn btn-outline-primary btn-sm" value="Atualizar">
+                            </td>
+                            <td>
+                                <input type="submit" class="btn btn-outline-danger btn-sm" value="Deletar">
+
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
         </div>
         <div id="styleSelector">
@@ -50,7 +64,8 @@
         </div>
     </div>
 </div>
-
-
-
 {% endblock %}    
+
+
+
+
