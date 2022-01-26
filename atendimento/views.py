@@ -63,7 +63,13 @@ def atualizar_contato(request, pk):
             return redirect('index')
     return render(request, 'atendimento/cadastrar/cadastrar-contato.html', {'form': form})
 
-
+@login_required(login_url='entrar/')
+def deletar_contato(request, pk):
+	contato = Contato.objects.get(id=pk)
+	if request.method == "POST":
+		contato.delete()
+		return redirect('index')
+	return render(request, 'atendimento/deletar-contato.html', {'contato': contato})
 
 @login_required(login_url='entrar/')
 def visualizar_vendas(request):

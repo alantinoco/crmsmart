@@ -28,7 +28,9 @@
                         </a>
                     </td>
                     <td>
-                        <input type="submit" class="btn btn-outline-danger btn-sm" value="Deletar">
+                        <a href="{% url 'deletar_contato' agendamento.id %}">
+                            <input type="submit" class="btn btn-outline-danger btn-sm" value="Deletar">
+                        </a>
                     </td>
                 </tr>
                 {% endfor %}

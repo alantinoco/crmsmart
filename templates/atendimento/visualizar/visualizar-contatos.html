@@ -54,14 +54,16 @@
                             <td>{{contato.email}}</td>
                             <td>{{contato.cpf}}</td>
                             <td>{{contato.curso_desejado}}</td>
-                            <td>{{contato.origem}}</td>
-                            
+                            <td>{{contato.origem}}</td> 
                             <td>
-                                <input type="submit" class="btn btn-outline-primary btn-sm" value="Atualizar">
+                                <a href="{% url 'atualizar_contato' contato.id %}">
+                                    <input type="submit" class="btn btn-outline-primary btn-sm" value="Editar">
+                                </a>
                             </td>
                             <td>
-                                <input type="submit" class="btn btn-outline-danger btn-sm" value="Deletar">
-
+                                <a href="{% url 'deletar_contato' contato.id %}">
+                                    <input type="submit" class="btn btn-outline-danger btn-sm" value="Deletar">
+                                </a>
                             </td>
                         </tr>
                         {% endfor %}
