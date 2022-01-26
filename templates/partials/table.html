@@ -23,7 +23,9 @@
                     <td>{{agendamento.nome}}</td>
                     <td>{{agendamento.horário}}</td>
                     <td>
-                        <input type="submit" class="btn btn-outline-primary btn-sm" value="Editar">
+                        <a href="{% url 'atualizar_contato' agendamento.id %}">
+                            <input type="submit" class="btn btn-outline-primary btn-sm" value="Editar">
+                        </a>
                     </td>
                     <td>
                         <input type="submit" class="btn btn-outline-danger btn-sm" value="Deletar">

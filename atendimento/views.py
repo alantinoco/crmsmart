@@ -52,6 +52,18 @@ def visualizar_contato(request, pk):
     contato = Contato.objects.get(id=pk)
     return render(request, 'atendimento/visualizar/visualizar-contato.html', {'contato': contato})
 
+@login_required(login_url='entrar/')
+def atualizar_contato(request, pk):
+    contato = Contato.objects.get(id=pk)
+    form = ContatoForm(instance=contato)
+    if request.method == "POST":
+        form = ContatoForm(request.POST, instance=contato)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    return render(request, 'atendimento/cadastrar/cadastrar-contato.html', {'form': form})
+
+
 
 @login_required(login_url='entrar/')
 def visualizar_vendas(request):
