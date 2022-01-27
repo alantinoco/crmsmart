@@ -13,15 +13,14 @@ import datetime
 @login_required(login_url='entrar/')
 def index(request):
     hoje = datetime.datetime.now()
-
     agendamentos = Contato.objects.all()
-    filter = ContatoFilter(request.GET, queryset=agendamentos)
-
-    
-    contatos = str(len(Contato.objects.filter(data=hoje)))
+    contatos = len(str(Contato.objects.filter(data_de_criação=hoje)))
+    print(contatos)
     agendados = str(len(Contato.objects.filter(agendado="S", data=hoje)))
     # agendamentos = Contato.objects.filter(data=hoje)
     não_agendados = str(len(Contato.objects.filter(agendado="N", data=hoje)))
+
+    filter = ContatoFilter(request.GET, queryset=agendamentos)
 
 
     context = {

@@ -62,6 +62,9 @@ class Contato(models.Model):
     data_de_criação = models.DateTimeField(auto_now_add=True)
     última_modificação = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        ordering = ('-data_de_criação',)
+
     def __str__(self):
         return f"{self.nome} {self.sobrenome}"
 
