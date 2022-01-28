@@ -6,19 +6,26 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from atendimento.filters import ContatoFilter
-import datetime
+from datetime import date
 
 
 
 @login_required(login_url='entrar/')
 def index(request):
-    hoje = datetime.datetime.now()
+    hoje = date.today()
+    
     agendamentos = Contato.objects.all()
-    contatos = len(str(Contato.objects.filter(data_de_criação=hoje)))
-    print(contatos)
-    agendados = str(len(Contato.objects.filter(agendado="S", data=hoje)))
+    agendamentos_de_hoje = Contato.objects.filter(agendado='S').filter(data_de_criação__contains=hoje)
+    agendados = agendamentos_de_hoje.count()
+
+    
+    contatos_de_hoje = Contato.objects.filter(data_de_criação__contains=hoje)
+    contatos = contatos_de_hoje.count()
+
+    #agendados = str(len(Contato.objects.filter(agendado="S", data=hoje)))
     # agendamentos = Contato.objects.filter(data=hoje)
-    não_agendados = str(len(Contato.objects.filter(agendado="N", data=hoje)))
+    não_agendados_de_hoje = Contato.objects.filter(agendado="N").filter(data_de_criação__contains=hoje)
+    não_agendados = não_agendados_de_hoje.count()
 
     filter = ContatoFilter(request.GET, queryset=agendamentos)
 
