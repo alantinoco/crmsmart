@@ -52,6 +52,7 @@ def visualizar_contato(request, pk):
     contato = Contato.objects.get(id=pk)
     return render(request, 'atendimento/visualizar/visualizar-contato.html', {'contato': contato})
 
+
 @login_required(login_url='entrar/')
 def atualizar_contato(request, pk):
     contato = Contato.objects.get(id=pk)
@@ -63,6 +64,7 @@ def atualizar_contato(request, pk):
             return redirect('index')
     return render(request, 'atendimento/cadastrar/cadastrar-contato.html', {'form': form})
 
+
 @login_required(login_url='entrar/')
 def deletar_contato(request, pk):
 	contato = Contato.objects.get(id=pk)
@@ -71,10 +73,12 @@ def deletar_contato(request, pk):
 		return redirect('index')
 	return render(request, 'atendimento/deletar-contato.html', {'contato': contato})
 
+
 @login_required(login_url='entrar/')
 def visualizar_vendas(request):
     vendas = Venda.objects.all()
     return render(request, 'atendimento/visualizar/visualizar-vendas.html', {'vendas': vendas})
+
 
 @login_required(login_url='entrar/')
 def visualizar_venda(request, pk):
@@ -82,4 +86,21 @@ def visualizar_venda(request, pk):
     return render(request, 'atendimento/visualizar/visualizar-venda.html', {'vendas': vendas})
 
 
+@login_required(login_url='entrar/')
+def atualizar_venda(request, pk):
+    venda = Venda.objects.get(id=pk)
+    form = VendaForm(instance=venda)
+    if request.method == "POST":
+        form = VendaForm(request.POST, instance=venda)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    return render(request, 'atendimento/cadastrar/cadastrar-venda.html', {'form': form})
 
+@login_required(login_url='entrar/')
+def deletar_venda(request, pk):
+	venda = Venda.objects.get(id=pk)
+	if request.method == "POST":
+		venda.delete()
+		return redirect('index')
+	return render(request, 'atendimento/deletar-venda.html', {'venda': venda})

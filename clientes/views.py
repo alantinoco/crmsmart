@@ -8,8 +8,6 @@ from django.contrib import messages
 from atendimento.filters import ContatoFilter
 from datetime import date
 
-
-
 @login_required(login_url='entrar/')
 def index(request):
     hoje = date.today()
@@ -35,14 +33,7 @@ def index(request):
     outros_de_hoje = Contato.objects.filter(origem="Outros").filter(data_de_criação__contains=hoje)
     outros = outros_de_hoje.count()
 
-
-
-    
-
-    
-
     filter = ContatoFilter(request.GET, queryset=agendamentos)
-
 
     context = {
         "agendamentos": agendamentos,
@@ -63,7 +54,6 @@ def index(request):
     return render(request, 'index.html', context)
 
 
-
 def entrar(request):
     form = EntrarForm()
     context = {
@@ -81,6 +71,7 @@ def entrar(request):
             else:
                 messages.error(request, "Dados inválidos!")           
     return render(request, 'auth-normal-sign-in.html', context)
+
 
 @login_required(login_url='entrar/')
 def sair(request):

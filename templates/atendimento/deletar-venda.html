@@ -57,8 +57,12 @@
 </div>
 <br><br><br><br><br>
 <div class="pcoded-content text-center">
-    <p>Realmente deseja deletar o cadastro do cliente <b>"{{contato.nome}}"</b>?</p><br>
-    <form action="{% url 'deletar_contato' contato.id %}" method="POST">
+    <p>
+        Realmente deseja deletar a venda do cliente <b>"{{venda.cliente}}"</b>?
+        <br>
+        O Curso comprado foi <b>"{{venda.curso_comprado}}"</b>.
+    </p><br>
+    <form action="{% url 'deletar_venda' venda.id %}" method="POST">
             {% csrf_token %}
             <a href="{% url 'index' %}" class="btn btn-warning btn-sm" >Cancelar</a>
             <input type="submit" value="Excluir" class="btn btn-danger btn-sm">

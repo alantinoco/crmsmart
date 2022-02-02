@@ -49,11 +49,14 @@
                             <td>{{venda.curso_comprado}}</td>
                             <td>{{venda.forma_de_pagamento}}</td>        
                             <td>
-                                <input type="submit" class="btn btn-outline-primary btn-sm" value="Atualizar">
+                                <a href="{% url 'atualizar_venda' venda.id %}">
+                                    <input type="submit" class="btn btn-outline-primary btn-sm" value="Atualizar">
+                                </a>
                             </td>
                             <td>
-                                <input type="submit" class="btn btn-outline-danger btn-sm" value="Deletar">
-
+                                <a href="{% url 'deletar_venda' venda.id %}">
+                                    <input type="submit" class="btn btn-outline-danger btn-sm" value="Deletar">
+                                </a>
                             </td>
                         </tr>
                         {% endfor %}
