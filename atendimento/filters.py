@@ -5,4 +5,4 @@ class ContatoFilter(django_filters.FilterSet):
     data = django_filters.DateRangeFilter(lookup_expr='iexact')
     class Meta:
         model = Contato
-        fields = ('data',)
+        fields = ('data', 'agendado')
