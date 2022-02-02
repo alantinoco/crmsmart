@@ -17,8 +17,8 @@ def index(request):
     agendamentos = Contato.objects.all()
     agendamentos_de_hoje = Contato.objects.filter(agendado='S').filter(data_de_criação__contains=hoje)
     agendados = agendamentos_de_hoje.count()
-
-    
+    vendas_de_hoje = Venda.objects.filter(comprou='S').filter(data__contains=hoje)
+    vendas = vendas_de_hoje.count()
     contatos_de_hoje = Contato.objects.filter(data_de_criação__contains=hoje)
     contatos = contatos_de_hoje.count()
 
@@ -35,7 +35,9 @@ def index(request):
         "contatos": contatos,
         "agendados": agendados,
         "não_agendados": não_agendados,
+        "vendas": vendas,
         'filter': filter,
+        "contatos_de_hoje": contatos_de_hoje,
     }
    
     return render(request, 'index.html', context)
