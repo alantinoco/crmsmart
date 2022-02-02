@@ -52,7 +52,7 @@ class Contato(models.Model):
     sobrenome = models.CharField(max_length=50, null=True, blank=True)
     telefone = models.CharField(max_length=11, unique=True)
     email = models.EmailField(max_length=50, null=True, blank=True, unique=True)
-    cpf = models.CharField(max_length=50, null=True, blank=True)
+    cpf = models.CharField(max_length=11, null=True, blank=True)
     curso_desejado = models.ForeignKey(Cursos, null=True, blank=True, on_delete=models.CASCADE)
     origem = models.CharField(max_length=50, choices=ORIGEM)
     agendado = models.CharField(max_length=50, choices=AGENDADO)
