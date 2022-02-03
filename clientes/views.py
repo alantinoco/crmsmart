@@ -49,6 +49,7 @@ def index(request):
         "panfletos": panfletos,
         "matriz": matriz,
         "outros": outros,
+        "hoje": hoje,
     }
    
     return render(request, 'index.html', context)
