@@ -7,6 +7,11 @@ Sistema de gestão de contatos, clientes e vendas. O sistema foi desenvolvido pa
 - Django 4.0
 - Bootstrap4
 
+# Telas
+
+![image](https://user-images.githubusercontent.com/62164454/154967275-1d12a374-f822-4751-8766-4e2a563935ab.png)
+
+
 # Autor
 
 Alan Tinoco
